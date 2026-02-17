@@ -75,7 +75,60 @@ Quote_Genie/
 ```
 
 ## 📊 How It Works
-1. **Input**: User enters shipment details (Weight, Volume, Route).
-2. **Predict**: Backend uses `price_opt_model` to estimate market rate and `win_prob_model` to predict acceptance chance.
-3. **Optimize**: System suggests a price that maximizes margin within a safe win probability range.
-4. **Display**: Frontend shows the recommended price, confidence interval, and win probability.
+
+The Quote Genie engine operates in a four-stage pipeline:
+
+1.  **Input**: Sales rep enters shipment details (Weight, Volume, Route, Customer Segment).
+2.  **Predict**:
+    *   **Price Optimization Model**: Estimates the current market rate for the lane.
+    *   **Win Probability Model**: Predicts the likelihood of the customer accepting a quote at various price points.
+3.  **Optimize**: The system identifies the price point that maximizes expected margin while maintaining a safe win probability threshold.
+4.  **Display**: The frontend presents the "Recommended Price", a confidence interval, and key influencing factors (SHAP values).
+
+### 🔄 End-to-End System Flow
+
+```mermaid
+graph TD
+    subgraph "Frontend Layer"
+        A[User Input] -->|Shipment Details| B[Quote Request JSON]
+        F[Display Results]
+    end
+
+    subgraph "Backend API Layer"
+        B -->|POST /predict| C[FastAPI Controller]
+        C -->|Data| D[Feature Engineering]
+        E[Response JSON] --> F
+    end
+
+    subgraph "ML Intelligence Layer"
+        D -->|Features| M1[Price Optimization Model]
+        D -->|Features| M2[Win Probability Model]
+        
+        M1 -->|Market Rate Est| O[Optimization Logic]
+        M2 -->|Win Probability| O
+        
+        O -->|Recommended Price + Confidence| E
+    end
+```
+
+### 🧠 App Workflow
+
+```mermaid
+sequenceDiagram
+    participant User as Sales Rep
+    participant FE as Frontend UI
+    participant API as Backend API
+    participant ML as ML Engine
+
+    User->>FE: Enters Weight, Origin, Destination
+    User->>FE: Clicks "Get Quote"
+    FE->>API: POST /predict (payload)
+    API->>ML: Predict Market Rate (XGB Regressor)
+    ML-->>API: Returns Base Price
+    API->>ML: Predict Win Prob @ Base Price (XGB Classifier)
+    ML-->>API: Returns Probability %
+    API->>API: Apply Business Rules (Min Margin)
+    API-->>FE: Return Optimal Price & Confidence
+    FE-->>User: Visualizes Price, Margin & Win %
+```
+
