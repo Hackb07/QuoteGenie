@@ -85,19 +85,19 @@ npm run dev
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 Quote_Genie/
-├── 🧠 ml_engine/        # Training pipelines & Data generators
-├── 🔌 backend/          # FastAPI server & Model inference
-├── 💻 frontend/         # React application
-└── 📄 docs/             # Planning & Architecture documents
+├── ml_engine/        # Training pipelines & Data generators
+├── backend/          # FastAPI server & Model inference
+├── frontend/         # React application
+└── docs/             # Planning & Architecture documents
 ```
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and follow our coding standards.
 
