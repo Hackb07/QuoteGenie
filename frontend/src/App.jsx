@@ -1,34 +1,56 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import QuoteForm from './components/QuoteForm'
+import { Hexagon } from 'lucide-react'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      {/* Navbar to match the reference image */}
+      <nav className="simple-nav">
+        <div className="nav-logo">
+          {/* Simple dots/logo representation */}
+          <div className="dot-logo">
+            <span className="dot"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </div>
+        </div>
+        <div className="nav-links">
+          <a href="#" className="active">HOME</a>
+          <a href="#">ABOUT</a>
+          <a href="#">SERVICES</a>
+          <a href="#">PORTFOLIO</a>
+          <a href="#">CONTACT</a>
+        </div>
+        <div className="nav-menu-icon">
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+      </nav>
+
+      {/* Main Hero Content */}
+      <main className="main-content">
+        <div className="hero-text">
+          <h1 className="simplicity-title">QUOTE GENIE</h1>
+          <div className="subtitle-grid">
+            <span>PREDICTIVE PRICING</span>
+            <span>EASY TO NAVIGATE</span>
+            <span>INSTANT QUOTES</span>
+            <span>MORE PROFIT</span>
+          </div>
+        </div>
+
+        <QuoteForm />
+      </main>
+
+      {/* Simple Footer/Icons area */}
+      <footer className="simple-footer">
+        <div className="footer-icon">★</div>
+        <div className="footer-icon">📍</div>
+        <div className="footer-icon">📄</div>
+      </footer>
+    </div>
   )
 }
 

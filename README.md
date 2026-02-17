@@ -1,51 +1,81 @@
 # Quote Genie: Predictive Pricing Intelligence Engine (PPIE)
 
-## 1. Solution Overview
-To eliminate manual, inconsistent quoting and enable dynamic, competitive pricing, Quote Genie is a Predictive Pricing Intelligence Engine (PPIE) — a supervised machine learning system that:
-- Learns from historical shipment data
-- Forecasts optimal price in real-time
-- Balances win probability vs. target margin
-- Adapts dynamically to market conditions
+**Quote Genie** eliminates manual, inconsistent quoting by leveraging supervised machine learning to forecast optimal prices in real-time. It balances win probability with target margins, transforming pricing into an adaptive, AI-driven process.
 
-This transforms pricing from static rule-based estimation → to adaptive, AI-driven decision intelligence.
+## 🚀 Key Features
+- **Dual-Model Strategy**: 
+    - **Win Probability Model** (XGBoost Classifier) predicts acceptance likelihood.
+    - **Price Optimization Model** (XGBRegressor) forecasts market rates.
+- **Real-Time Quoting**: Instant price recommendations via FastAPI backend.
+- **Rich Aesthetics**: Modern, glassmorphism-based UI for sales reps.
+- **Explainability**: Insights into key factors driving the price (Weight, Market Conditions).
 
-## 2. System Architecture
-The system consists of five core modules:
-1. **Data Engineering Layer**
-2. **Feature Engineering Layer**
-3. **Predictive ML Models**
-4. **Business Rule Engine**
-5. **Real-Time Quoting Interface (UI/API)**
+## 🛠️ Architecture
+- **Frontend**: React + Vite (Glassmorphism Design)
+- **Backend**: FastAPI (Python)
+- **ML Engine**: Scikit-Learn, XGBoost, Pandas
+- **Data**: Synthetic Data Generator included for demonstration.
 
-## 3. Technology Stack
+## 🏁 Getting Started
 
-### Machine Learning Layer
-- Python
-- Scikit-Learn
-- XGBoost / LightGBM
-- SHAP (Model Explainability)
+### 1. Backend Setup
+The backend handles the ML inference and API requests.
 
-### Backend / API
-- FastAPI (Model API)
-- Python
+```bash
+cd backend
+# Install dependencies
+pip install -r requirements.txt
+pip install scikit-learn xgboost pandas numpy joblib fastapi uvicorn python-multipart
 
-### Frontend
-- React.js (Vite)
-- TailwindCSS (Proposed for UI)
+# Start the API server
+uvicorn main:app --reload
+```
+The API will be available at `http://localhost:8000`.
 
-### Data Layer
-- PostgreSQL / MySQL
-- Pandas / NumPy
+### 2. Machine Learning Engine
+To train the models from scratch (using synthetic data):
 
-### Deployment & DevOps
-- Docker
-- Kubernetes support
+```bash
+cd ml_engine
+# Generate synthetic historical data
+python generate_data.py
 
-## 4. Key Features
-- **Dual-Model Strategy**: Win Probability (Classification) & Price Optimization (Regression).
-- **Real-Time Quoting**: Instant price recommendations with confidence intervals.
-- **Explainability**: SHAP values to explain pricing factors.
-- **Continuous Learning**: Feedback loops from win/loss outcomes.
+# Train models (Win Probability & Price Optimization)
+python train_model.py
+```
+This will save trained models to `backend/models/`.
 
-## 5. Setup & Installation
-*(Coming Soon)*
+### 3. Frontend Setup
+The frontend provides the sales rep interface.
+
+```bash
+cd frontend
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+Open your browser at the URL shown (usually `http://localhost:5173`).
+
+## 📂 Project Structure
+```
+Quote_Genie/
+├── backend/            # FastAPI Application
+│   ├── main.py         # API Endpoints & Inference Logic
+│   ├── models/         # Trained ML Models (pkl files)
+│   └── requirements.txt
+├── frontend/           # React + Vite Application
+│   ├── src/components/ # UI Components (QuoteForm)
+│   └── src/api/        # API Integration
+├── ml_engine/          # Machine Learning Scripts
+│   ├── generate_data.py # Synthetic Data Generator
+│   └── train_model.py   # Model Training Pipeline
+└── docs/               # Documentation
+```
+
+## 📊 How It Works
+1. **Input**: User enters shipment details (Weight, Volume, Route).
+2. **Predict**: Backend uses `price_opt_model` to estimate market rate and `win_prob_model` to predict acceptance chance.
+3. **Optimize**: System suggests a price that maximizes margin within a safe win probability range.
+4. **Display**: Frontend shows the recommended price, confidence interval, and win probability.
