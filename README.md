@@ -37,10 +37,10 @@ graph TD
 
 ##  Key Features
 
-*   ** Real-Time Intelligence**: Get instant price recommendations based on live parameters (Weight, Volume, Route).
-*   ** Dual-Model ML**: Combines regression (price) and classification (win chance) for holistic decision making.
-*   ** Simplicity Design**: A clean, minimalist interface focused on clarity and speed.
-*   ** Explainable AI**: Understand *why* a price was recommended (e.g., "High Demand Route", "Heavy Payload").
+*   **Real-Time Intelligence**: Get instant price recommendations based on live parameters (Weight, Volume, Route).
+*   **Dual-Model ML**: Combines regression (price) and classification (win chance) for holistic decision making.
+*   **Simplicity Design**: A clean, minimalist interface focused on clarity and speed.
+*   **Explainable AI**: Understand *why* a price was recommended (e.g., "High Demand Route", "Heavy Payload").
 
 ---
 
