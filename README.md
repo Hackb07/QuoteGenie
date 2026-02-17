@@ -1,4 +1,4 @@
-# Quote Genie 🔮
+# Quote Genie 
 
 > **Predictive Pricing Intelligence Engine (PPIE)**  
 > *Data-Driven Decisions. Optimized Margins. Winning Quotes.*
@@ -9,14 +9,14 @@
 
 ---
 
-## 📸 System Overview
+##  System Overview
 
 The engine operates on a sophisticated **Dual-Model Architecture**:
 
 1.  **Price Optimization** (XGBRegressor): "What is the fair market rate?"
 2.  **Win Probability** (XGBClassifier): "What is the chance of winning at this price?"
 
-### 🔄 End-to-End Flow
+###  End-to-End Flow
 ```mermaid
 graph TD
     User([Sales Rep]) -->|Input| UI[Frontend Interface]
@@ -35,12 +35,12 @@ graph TD
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
-*   **⚡ Real-Time Intelligence**: Get instant price recommendations based on live parameters (Weight, Volume, Route).
-*   **🧠 Dual-Model ML**: Combines regression (price) and classification (win chance) for holistic decision making.
-*   **🎨 Simplicity Design**: A clean, minimalist interface focused on clarity and speed.
-*   **🔍 Explainable AI**: Understand *why* a price was recommended (e.g., "High Demand Route", "Heavy Payload").
+*   ** Real-Time Intelligence**: Get instant price recommendations based on live parameters (Weight, Volume, Route).
+*   ** Dual-Model ML**: Combines regression (price) and classification (win chance) for holistic decision making.
+*   ** Simplicity Design**: A clean, minimalist interface focused on clarity and speed.
+*   ** Explainable AI**: Understand *why* a price was recommended (e.g., "High Demand Route", "Heavy Payload").
 
 ---
 
